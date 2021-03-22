@@ -20,4 +20,14 @@ folder (typeclasses.foo) whereas paths within the Evennia library
 needs to be given explicitly (evennia.foo).
 
 """
-from .production_settings import *
+from .base_settings import *
+
+TELNET_PORTS = [4000]
+SERVERNAME = "Nirvana"
+GAME_SLOGAN = "A simpler life."
+
+try:
+    from server.conf.secret_settings import *
+except ImportError:
+    print("secret_settings.py file not found or failed to import.")
+
