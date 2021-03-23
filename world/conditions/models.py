@@ -741,7 +741,7 @@ class RecoveryRunner(SharedMemoryModel):
         "Characters above 0 health will regain consciousness if they "
         "succeed the check.",
     )
-    recovery_interval = models.PositiveSmallIntegerField(
+    recovery_interval = models.PositiveIntegerField(
         default=60 * 60 * 24, help_text="Number of seconds between recovery checks."
     )
     revive_interval = models.PositiveSmallIntegerField(

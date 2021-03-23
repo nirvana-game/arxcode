@@ -3,9 +3,6 @@ Base settings that we'll inherit from
 """
 from evennia.settings_default import *
 
-# see documentation on python-decouple. tldr: create a settings.ini file at repo root, config() draws from that.
-from decouple import config, Csv
-
 ######################################################################
 # Evennia base server config
 ######################################################################
@@ -99,19 +96,18 @@ DEFAULT_CHANNELS = [
         "locks": "control:perm(Immortals);listen:perm(helper);send:perm(helper)",
     },
 ]
-'''
+
 DATABASES = {
     "default": {
-        "ENGINE": config("DBMS", default="django.db.backends.sqlite3"),
-        "NAME": os.path.join(GAME_DIR, "server", "evennia.db3"),
-        "USER": "",
-        "PASSWORD": "",
-        "HOST": "",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "nirvana",
+        "USER": "nirvanadb",
+        "PASSWORD": "Nirsun123!@#",
+        "HOST": "localhost",
         "PORT": "",
-        "OPTIONS": {"timeout": 25},
     }
 }
-'''
+
 TEMPLATES[0]["OPTIONS"]["context_processors"] += [
     "web.character.context_processors.consts"
 ]
