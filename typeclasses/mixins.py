@@ -779,7 +779,12 @@ class MsgMixins(object):
         # compatibility change for Evennia changing text to be either str or tuple
         if not isinstance(text, str):
             try:
-                text = text[0]
+                if 0 in text:
+                    text = text[0]
+                elif type(text) is dict:
+                    text = list(text.values())[0]
+                elif type(text) is tuple:
+                    text = text[0]
             except TypeError:
                 pass
         options = options or {}
